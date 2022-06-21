@@ -1,11 +1,11 @@
-#navbar{
+.navbar{
 
 display: flex;
 
 
 flex-wrap: wrap;
 
-justify-content: right;
+justify-content: space-around;
 
 
 background-color: grey;

@@ -7,5 +7,55 @@ background-color: #50C878;
 
 color: white;
 
+margin-left: 300px;
 
+
+margin-right: 300px;
+
+
+height: 350px;
+
+
+font-size:x-large;
+
+}
+
+
+#image{
+
+
+display: flex;
+
+
+justify-content: right;
+
+
+flex-wrap: wrap;
+
+
+height: 150px;
+
+
+width: 120px;
+
+}
+
+
+#empty-div{
+
+height: 100px;
+
+
+width: 10px;
+
+
+}
+
+
+
+#texts{
+
+
+
+    margin: 30px;
 }

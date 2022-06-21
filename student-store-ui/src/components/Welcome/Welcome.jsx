@@ -3,10 +3,12 @@ import "./Welcome.css"
 
 export default function Home() {
   return (
-    <div className="Welcome">
+<div  id="bigger-container">
 
-        <div id="welcome">
 
+            <div id="welcome" className="Welcome">
+
+        <div id="texts">
 
         <div> <h1> Welcome!</h1>
         
@@ -14,20 +16,59 @@ export default function Home() {
 
 
         <div>
+        
         <p>
             We have all kinds of goodies. Click on any of the items to start filling up your shopping cart. Checkout whenever you're ready
+            
         </p>
-        </div>
+
+
+        
+
+        
+
+        
         
         </div>
+
+
         
+        </div>
+
+
+
+
+       
+
+
+        
+    
+
+    
+
+
+
+
+        
+        
+        </div>
+
+        <img id="image" src="https://codepath-student-store-demo.surge.sh/assets/student_store_icon.18e5d61a.svg"/>
 
 
 
         
-        
-        </div>
     
     </div>
+
+
+    </div>
+
+
+
+
+
+    
+    
   )
 }
