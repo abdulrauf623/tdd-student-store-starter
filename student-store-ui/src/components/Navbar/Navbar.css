@@ -1,0 +1,15 @@
+#navbar{
+
+display: flex;
+
+
+flex-wrap: wrap;
+
+justify-content: right;
+
+
+background-color: grey;
+
+
+
+}
