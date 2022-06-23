@@ -4,11 +4,10 @@ import "./NotFound.css"
 
 import Welcome from "/src/components/Welcome/Welcome"
 
-export default function Home() {
+export default function NotFound() {
   return (
     <div className="home">
-      <Welcome/>
-      <p>Home</p>
+     <p> `Not Found `</p>
     </div>
   )
 }

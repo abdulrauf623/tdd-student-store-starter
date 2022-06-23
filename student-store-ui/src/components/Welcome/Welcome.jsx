@@ -1,14 +1,14 @@
 import * as React from "react"
 import "./Welcome.css"
 
-export default function Home() {
+export default function Welcome() {
   return (
 <div  id="bigger-container">
 
 
-            <div id="welcome" className="Welcome">
+            <div id="welcome" className="hero">
 
-        <div id="texts">
+        <div id="texts" className="intro">
 
         <div> <h1> Welcome!</h1>
         
