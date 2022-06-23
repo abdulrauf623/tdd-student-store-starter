@@ -10,6 +10,8 @@ export default function ProductCard({product, productId, quantity, handleAddItem
 
 
 
+
+
     const description = showDescription ? <div className="product-description">{product.description}</div> : ""
 
 
@@ -17,22 +19,23 @@ export default function ProductCard({product, productId, quantity, handleAddItem
   return (
     <div className="product-card">
 
-        <div className="product-name"> {product.name} </div>
-
-        <div className="product-price"> ${product.price}</div>
+       
 
 
         {description}
 
 
         <Link to = {"/products/" + productId}>< img src = {product.image} height = "300px" className="image"/> </Link>
+        <div className="product-name"> {product.name} </div>
+
+        <div className="product-price"> ${product.price}</div>
 
 
 
-        <button className="add" onClick={() => handleAddItemToCart()}></button>
+        <button className="add" onClick={() => handleAddItemToCart()}>{"+"}</button>
 
 
-        <button className="remove" onClick = {() => handleRemoveItemToCart()}></button>
+        <button className="remove" onClick = {() => handleRemoveItemToCart()}>{"-"}</button>
 
         <div className="product-quantity">{quantity}</div>
         
