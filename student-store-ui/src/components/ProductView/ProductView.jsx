@@ -6,7 +6,7 @@ import Welcome from "/src/components/Welcome/Welcome"
 
 import ProductCard from "/src/components/ProductCard/ProductCard"
 
-export default function ProductView({product, productId, quantity, handleAddItemToCart, handleRemoveItemToCart}) {
+export default function ProductView({product, productId, quantity, handleAddItemToCart, handleRemoveItemToCart, shoppingCart}) {
 
 
 
@@ -17,7 +17,7 @@ export default function ProductView({product, productId, quantity, handleAddItem
         <h1 className="product-id">Product # {productId}</h1>
 
 
-        <ProductCard showDescription = {true} product = {product} productId = {productId} quantity = {quantity} handleAddItemToCart = {handleAddItemToCart} handleRemoveItemFromCart = {handleRemoveItemToCart} />
+        <ProductCard showDescription = {true} product = {product} productId = {productId} quantity = {quantity} handleAddItemToCart = {handleAddItemToCart} handleRemoveItemToCart = {handleRemoveItemToCart} shoppingCart = {shoppingCart}/>
 
 
     </div>

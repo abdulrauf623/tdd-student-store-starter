@@ -35,7 +35,7 @@ export default function ProductDetail({
 
   const quantity = 0
 
-  const whenLoaded = <ProductView product = {product} productId = {productId} quantity = {quantity} handleAddItemToCart = {handleAddItemToCart} handleRemoveItemToCart = {handleRemoveItemToCart}/>
+  const whenLoaded = <ProductView shoppingCart = {shoppingCart} product = {product} productId = {productId} quantity = {quantity} handleAddItemToCart = {handleAddItemToCart} handleRemoveItemToCart = {handleRemoveItemToCart}/>
 
 
   const element = isLoading ?  <h1> Loading...</h1> :

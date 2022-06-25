@@ -31,7 +31,7 @@ export default function App() {
 
   useEffect(async () => {
     const response = await axios.get(
-      "https://codepath-store-api.herokuapp.com/store"
+      "https://codepath-store-api.herokuapp.com/store/"
     );
 
     console.log("Response Data: ", response.data);
@@ -50,15 +50,32 @@ export default function App() {
   function handleAddItemToCart(productId) {
     //
 
-    let item = shoppingCart.find((element) => element.id === productId);
+    let item = shoppingCart.find((element) => element.id == productId);
+
 
     if (item) {
-      shoppingCart.map((item) => {
-        if (item.id === productId) {
-          item.capacity += 1;
+
+
+
+      const newShoppingCart = [...shoppingCart]
+
+      newShoppingCart.forEach(( item) => {
+
+        if (item.id == productId){
+          
+          item.quantity += 1;
         }
+
+
+
+        setShoppingCart(newShoppingCart)
+
+
+
       });
     } else {
+
+
       item = {
         id: productId,
 
@@ -70,20 +87,34 @@ export default function App() {
   }
 
   function handleRemoveItemToCart(productId) {
-    let item = shoppingCart.find((element) => element.id === productId);
+    let item = shoppingCart.find((element) => element.id == productId);
 
     if (item) {
-      if (item.quantity === 1) {
-        shoppingCart.filter((prod) => {
-          return prod.id !== productId;
-        });
+      if (item.quantity == 1) {
+
+        const newCart = shoppingCart.filter((prod) => {
+
+
+          return prod.id != productId
+
+
+        })
+
+
+        setShoppingCart(newCart)
+
+        console.log("ShoppingCart: ", shoppingCart)
+
+
+
+
       } else {
         item.quantity -= 1;
       }
     }
   }
 
-  function handleCheckoutFormChange(names, values) {
+  function handleOnCheckoutFormChange(names, values) {
     let userInformation = {
       name: names,
 
@@ -112,8 +143,8 @@ export default function App() {
     <div className="app">
       <BrowserRouter>
         <main>
+        <Sidebar isOpen={isOpen} handleOnToggle={handleOnToggle} products = {products} shoppingCart = {shoppingCart} checkoutForm = {checkoutForm} handleOnCheckoutFormChange = {handleOnCheckoutFormChange} handleOnSubmitCheckoutForm = {handleOnSubmitCheckoutForm}/>
           <Navbar />
-
           <Routes>
             <Route
               path="/"
@@ -131,8 +162,6 @@ export default function App() {
 
             <Route path="*" element={<NotFound />} />
           </Routes>
-
-          <Sidebar />
         </main>
       </BrowserRouter>
     </div>

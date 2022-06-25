@@ -10,10 +10,16 @@ flex-wrap: wrap;
 justify-content: space-around;
 
 
-background-color: #40826D;
+background-color: #2c4047;;
 
 height: 100px;
 
+}
+
+.navbar{
+
+
+    background-color: #2c4047;;
 }
 
 

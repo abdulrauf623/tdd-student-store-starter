@@ -4,6 +4,8 @@ import "./Sidebar.css";
 import ShoppingCart from "/src/components/ShoppingCart/ShoppingCart";
 import CheckoutForm from "/src/components/CheckoutForm/CheckoutForm";
 
+import { useEffect } from "react";
+
 export default function Sidebar({
   isOpen,
   shoppingCart,
@@ -13,9 +15,21 @@ export default function Sidebar({
   handleOnSubmitCheckoutForm,
   handleOnToggle,
 }) {
-  const display1 = isOpen ? <ShoppingCart /> : "";
 
-  const display2 = isOpen ? <CheckoutForm /> : "";
+
+
+
+  
+  const display1 = isOpen ? <ShoppingCart isOpen = {isOpen} shoppingCart = {shoppingCart} products = {products}/> : "";
+
+  const display2 = isOpen ? <CheckoutForm isOpen = {isOpen} checkoutForm = {checkoutForm} shoppingCart = {shoppingCart} handleOnCheckoutFormChange = {handleOnCheckoutFormChange} handleOnSubmitCheckoutForm = {handleOnSubmitCheckoutForm} /> : "";
+
+  const arrow = isOpen ? "<---" : "➡️"
+
+  console.log("IsOpen: ", isOpen)
+  console.log("shopping cart", shoppingCart)
+
+  const cart = isOpen ? "" : "🛒"
 
   return (
     <section className="sidebar">
@@ -23,8 +37,9 @@ export default function Sidebar({
       <button
         className="toggle-button"
         onClick={() => handleOnToggle()}
-      ></button>
-      display1 display2
+      >{arrow}</button>
+      <div> {cart} </div>
+      {display1} {display2}
     </section>
   );
 }

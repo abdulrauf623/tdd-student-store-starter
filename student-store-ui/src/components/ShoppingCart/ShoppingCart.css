@@ -1,0 +1,100 @@
+.cart-product-name {
+
+    display: flex;
+    flex-direction: row;
+
+    list-style: none;
+
+background-color: white;
+
+border-color: black;
+border-style: outset;
+
+
+}
+
+.labels{
+
+
+    display: flex;
+
+    flex-direction: row;
+
+    list-style: none;
+
+    border-color: white;
+
+    height: 70px;
+
+    border-style: solid;
+
+    color: white;
+}
+
+.name-label{
+
+width: 250px;
+
+
+}
+
+.product-name{
+
+
+
+    height: 50px;
+    width: 250px;
+
+}
+
+
+.product-quantity{
+
+width: 100px;
+
+
+}
+.quantity-label{
+
+    width: 100px;
+}
+
+.product-unit-price{
+
+
+
+    width: 100px;
+}
+
+.u-price-label{
+
+
+    width: 100px;
+}
+
+
+.price-label{
+
+
+    width: 50px;
+}
+
+.price{
+
+width: 100px;
+
+
+}
+
+
+.shop{
+
+
+    color: white;
+}
+
+.no-show{
+
+color: white;
+
+}

@@ -3,7 +3,7 @@ import "./ProductGrid.css"
 
 import ProductCard from "/src/components/ProductCard/ProductCard"
 
-export default function ProductGrid({products, handleAddITemToCart, handleRemoveItemToCart, shoppingCart}) {
+export default function ProductGrid({products, handleAddItemToCart, handleRemoveItemToCart, shoppingCart}) {
     
 
 
@@ -15,13 +15,19 @@ export default function ProductGrid({products, handleAddITemToCart, handleRemove
       
       {  products.map((product) => {
 
-       return <ProductCard showDescription = {false} product = {product} productId = {product.id} quantity = {shoppingCart.quantity} handleAddITemToCart = {handleAddITemToCart} handleRemoveItemToCart = {handleRemoveItemToCart}/>
+
+       const prod = shoppingCart.find((item) => item.id == product.id)
+
+
+       const quantity = prod ? prod.quantity : 0
+
+       return <ProductCard showDescription = {false} product = {product} productId = {product.id} quantity = {quantity} handleAddItemToCart = {handleAddItemToCart} handleRemoveItemToCart = {handleRemoveItemToCart} shoppingCart = {shoppingCart}/>
 
 
 
 })
 
 }
-    </div>
+    </div> 
   )
 }

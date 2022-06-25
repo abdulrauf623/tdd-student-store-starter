@@ -10,3 +10,53 @@
     
 
 }
+
+
+.product-name{
+
+display: flex;
+
+flex-direction: row;
+
+height: 50px;
+
+border: black 1px solid;
+
+
+}
+
+.add{
+
+height: 30px;
+
+color: green;
+background-color: white;
+border-color: green;
+border-style: solid;
+
+}
+
+.remove{
+
+height: 30px;
+
+color: green;
+background-color: white;
+border-color: green;
+border-style: solid;
+}
+
+
+.name{
+
+
+    width: 300px;
+}
+
+
+.details{
+
+
+height: 1px;
+
+}
