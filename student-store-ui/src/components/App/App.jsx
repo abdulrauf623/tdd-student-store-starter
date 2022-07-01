@@ -12,6 +12,7 @@ import axios from "axios";
 import ProductDetail from "/src/components/ProductDetail/ProductDetail";
 
 import NotFound from "/src/components/NotFound/NotFound";
+import SearchDetail from "../SearchDetail/SearchDetail";
 
 export default function App() {
   const [products, setPrducts] = useState([]);
@@ -27,11 +28,11 @@ export default function App() {
   ); /*should contain an array of items that have item id and and Quantity representing the number of items purchased*/
 
   const [checkoutForm, setCheckoutForm] =
-    useState(); /*I am guessing this will contain an object that has the users information */
+    useState({"email" : "", "name" : ""}); /*I am guessing this will contain an object that has the users information */
 
   useEffect(async () => {
     const response = await axios.get(
-      "https://codepath-store-api.herokuapp.com/store/"
+      "http://localhost:3001/store/"
     );
 
     console.log("Response Data: ", response.data);
@@ -109,30 +110,58 @@ export default function App() {
 
 
       } else {
-        item.quantity -= 1;
+        const newShoppingCart = [...shoppingCart]
+
+      newShoppingCart.forEach(( item) => {
+
+        if (item.id == productId){
+          
+          item.quantity -= 1;
+        }
+
+
+
+        setShoppingCart(newShoppingCart)
+
+
+
+      });
       }
     }
   }
 
-  function handleOnCheckoutFormChange(names, values) {
-    let userInformation = {
-      name: names,
+  function handleOnCheckoutFormChange(change) {
+    let userInformation = {...checkoutForm}
 
-      value: values,
-    };
+    userInformation[change.target.name] = change.target.value
 
     setCheckoutForm(userInformation);
   }
 
   async function handleOnSubmitCheckoutForm(checkoutForm, shoppingCart) {
-    const response = axios.post(
-      "https://codepath-store-api.herokuapp.com/store",
-      {
-        user: checkoutForm,
 
-        shoppingCart: shoppingCart,
+
+    try {
+    const response = await axios.post(
+      "http://localhost:3001/store/",
+
+      {
+        "user" : {"name" : checkoutForm.name, "email" : checkoutForm.email},
+
+        "shoppingCart": shoppingCart,
       }
     );
+
+
+    console.log("Output from last post request", response.data)
+
+    }
+
+    catch(error){
+
+
+      console.log(error)
+    }
   }
 
   console.log("Products: ", products);
@@ -160,8 +189,9 @@ export default function App() {
 
             <Route path="/products/:productId" element={<ProductDetail  shoppingCart = {shoppingCart} handleAddItemToCart = {handleAddItemToCart} handleRemoveItemToCart = {handleRemoveItemToCart}/>} />
 
+
             <Route path="*" element={<NotFound />} />
-          </Routes>
+          </Routes>          
         </main>
       </BrowserRouter>
     </div>

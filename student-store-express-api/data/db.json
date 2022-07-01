@@ -145,44 +145,5 @@
       "price": 999.99
     }
   ],
-  "purchases": [
-    {
-      "id": 1,
-      "name": "why",
-      "email": "here",
-      "order": [
-        {
-          "id": 1,
-          "quantity": 1
-        },
-        {
-          "id": 2,
-          "quantity": 1
-        }
-      ],
-      "total": 0,
-      "createdAt": "12:13:8"
-    },
-    {
-      "id": 2,
-      "name": "aloye ",
-      "email": "whokilledhim@gmail.com",
-      "order": [
-        {
-          "id": 1,
-          "quantity": 1
-        },
-        {
-          "id": 2,
-          "quantity": 1
-        },
-        {
-          "id": 3,
-          "quantity": 1
-        }
-      ],
-      "total": 0,
-      "createdAt": "13:10:53"
-    }
-  ]
+  "purchases": []
 }

@@ -13,6 +13,8 @@ app.use(cors())
 
 const store = require("/Users/abdul.karim/studentStorePROJECT/models/Store")
 
+const { NotFoundError } = require("../utils/errors")
+
 app.use(morgan("tiny"))
 
 
@@ -38,6 +40,33 @@ app.get("/", async(req, res, next) => {
 
     res.status(200).json({ping : "pong"})
 })
+
+
+app.use((req, res, next) => {
+
+
+    return next(new NotFoundError())
+
+})
+
+
+app.use((err, req, res, next) => {
+
+
+    const status = err.status
+
+    const message = err.message
+
+    return res.status(status).json({
+
+
+        error : {message, status}
+    })
+
+
+})
+
+
 
 
 module.exports = app

@@ -5,6 +5,17 @@ import "./ShoppingCart.css"
 export default function ShoppingCart({isOpen, products, shoppingCart }) {
 
 
+    let subtotal = 0;
+
+    let subs;
+
+
+    let total = 0;
+
+
+
+   
+
 
 
 
@@ -17,7 +28,7 @@ export default function ShoppingCart({isOpen, products, shoppingCart }) {
 
     
 
-        shoppingCart.map((item) => {
+        (shoppingCart.map((item) => {
 
             console.log("Item in shoppng cart: ", item)
 
@@ -41,6 +52,9 @@ export default function ShoppingCart({isOpen, products, shoppingCart }) {
             console.log("Product: ", product)
 
 
+            subtotal += (item.quantity * product.price)
+
+
 
 
 
@@ -48,14 +62,32 @@ export default function ShoppingCart({isOpen, products, shoppingCart }) {
 
             
             
-            return <ul className="cart-product-name">
+            return (<ul className="cart-product-name">
                 
                <li className="product-name"> {product.name} </li>  
                 <li  className="product-quantity">{item.quantity}</li> 
                 <li className="product-unit-price">{product.price} </li>
                <li className="price"> {(item.quantity * product.price).toFixed(2)} </li>
-                </ul>
+
+
+
+
             
+
+
+                </ul>
+
+              )
+
+
+
+                
+                
+                
+                
+
+                
+           
             
             
             
@@ -66,7 +98,70 @@ export default function ShoppingCart({isOpen, products, shoppingCart }) {
 
         })
 
+
+        
+
+
+       
+        
+        
+        )
+
+       
+
         console.log("Show: ", show)
+
+
+
+        subs = (subtotal *0.0875).toFixed(2)
+
+
+         total = parseFloat(subs) + parseFloat(subtotal)
+
+
+
+         total = total.toFixed(2)
+
+
+
+
+        let me = <ul className="total">
+        
+        <ul className="subtotal"> 
+ 
+         <li className="sub"> Subtotal</li>
+ 
+         <li className="value"> {subtotal.toFixed(2)}</li>
+        
+        </ul>
+ 
+        <ul className="subtotal">
+            
+            <li className="sub"> Taxes</li>
+
+
+         
+
+
+            <li className="value"> {subs}</li>
+            
+            
+            </ul>
+
+
+            <ul className="subtotal">
+
+                <li className="sub"> Total</li>
+
+                
+                <li className="value">{ total} </li>
+            </ul>
+        
+        
+        
+         
+         </ul>
+        
 
 
 
@@ -94,6 +189,10 @@ export default function ShoppingCart({isOpen, products, shoppingCart }) {
 
         
         {show}
+
+
+
+        {shoppingCart.length != 0 ? me : ""}
 
 
         

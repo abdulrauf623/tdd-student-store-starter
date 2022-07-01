@@ -47,7 +47,7 @@ export default function ProductDetail({
   useEffect(async () => {
 
     console.log("ProductId: ", productId)
-    const url = `https://codepath-store-api.herokuapp.com/store/`;
+    const url = `http://localhost:3001/store/`;
 
     const finalURL = url + productId;
 

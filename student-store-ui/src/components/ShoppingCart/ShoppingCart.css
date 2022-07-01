@@ -1,14 +1,16 @@
 .cart-product-name {
 
-    display: flex;
-    flex-direction: row;
+display: flex;
+flex-direction: row;
 
-    list-style: none;
+list-style: none;
 
 background-color: white;
 
 border-color: black;
 border-style: outset;
+
+
 
 
 }
@@ -24,7 +26,7 @@ border-style: outset;
 
     border-color: white;
 
-    height: 70px;
+    height: 60px;
 
     border-style: solid;
 
@@ -42,7 +44,7 @@ width: 250px;
 
 
 
-    height: 50px;
+    height: 30px;
     width: 250px;
 
 }
@@ -97,4 +99,24 @@ width: 100px;
 
 color: white;
 
+}
+
+.subtotal{
+
+    display: flex;
+    flex-direction: row;
+
+    list-style: none;
+
+background-color: white;
+
+border-color: black;
+border-style: outset;
+}
+
+
+.sub{
+
+
+    width: 410px;
 }
