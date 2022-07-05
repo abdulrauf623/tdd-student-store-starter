@@ -15,7 +15,7 @@ import NotFound from "/src/components/NotFound/NotFound";
 import SearchDetail from "../SearchDetail/SearchDetail";
 
 export default function App() {
-  const [products, setPrducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const [isFetching, setIsFetching] = useState(false);
 
@@ -23,12 +23,56 @@ export default function App() {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const [isClicked, setIsClicked]  = useState(false)
+
   const [shoppingCart, setShoppingCart] = useState(
     []
   ); /*should contain an array of items that have item id and and Quantity representing the number of items purchased*/
 
   const [checkoutForm, setCheckoutForm] =
     useState({"email" : "", "name" : ""}); /*I am guessing this will contain an object that has the users information */
+
+
+  const [changeCategory, setChangeCategory] = useState("")
+
+
+  function changeToClothing(){
+
+
+    setChangeCategory("clothing")
+
+
+
+  }
+
+
+  function changeToTech(){
+
+
+    setChangeCategory("tech")
+  }
+
+
+  function changeToFood(){
+
+
+    setChangeCategory("food")
+  }
+
+
+  function changeToAccessories(){
+
+
+    setChangeCategory("accessories")
+  }
+
+  function changeToDefault(){
+
+
+    setChangeCategory("")
+  }
+
+
 
   useEffect(async () => {
     const response = await axios.get(
@@ -38,11 +82,24 @@ export default function App() {
     console.log("Response Data: ", response.data);
 
     if (response.data.products) {
-      setPrducts(response.data.products);
+
+      if (changeCategory.length < 1){
+      setProducts(response.data.products);
+
+      }
+
+      else{
+        const filteredproducts = response.data.products.filter((product) => { return product.category == changeCategory})
+
+
+        setProducts(filteredproducts)
+
+
+      }
     } else {
       setError("Error, could not find any products");
     }
-  }, []);
+  }, [changeCategory]);
 
   function handleOnToggle() {
     setIsOpen(!isOpen);
@@ -142,6 +199,8 @@ export default function App() {
 
 
     try {
+
+     setIsClicked(true)
     const response = await axios.post(
       "http://localhost:3001/store/",
 
@@ -162,6 +221,8 @@ export default function App() {
 
       console.log(error)
     }
+
+
   }
 
   console.log("Products: ", products);
@@ -172,13 +233,18 @@ export default function App() {
     <div className="app">
       <BrowserRouter>
         <main>
-        <Sidebar isOpen={isOpen} handleOnToggle={handleOnToggle} products = {products} shoppingCart = {shoppingCart} checkoutForm = {checkoutForm} handleOnCheckoutFormChange = {handleOnCheckoutFormChange} handleOnSubmitCheckoutForm = {handleOnSubmitCheckoutForm}/>
+        <Sidebar setCheckoutForm={setCheckoutForm} setShoppingCart={setShoppingCart} isClicked = {isClicked} setIsClicked = {setIsClicked} isOpen={isOpen} handleOnToggle={handleOnToggle} products = {products} shoppingCart = {shoppingCart} checkoutForm = {checkoutForm} handleOnCheckoutFormChange = {handleOnCheckoutFormChange} handleOnSubmitCheckoutForm = {handleOnSubmitCheckoutForm}/>
           <Navbar />
           <Routes>
             <Route
               path="/"
               element={
                 <Home
+                changeToDefault = {changeToDefault}
+                changeToAccessories = {changeToAccessories}
+                changeToClothing = {changeToClothing}
+                changeToFood = {changeToFood}
+                changeToTech = {changeToTech}
                   products={products}
                   handleAddItemToCart={handleAddItemToCart}
                   handleRemoveItemToCart={handleRemoveItemToCart}

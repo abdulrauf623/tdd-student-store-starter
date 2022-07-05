@@ -8,12 +8,16 @@ import { useEffect } from "react";
 
 export default function Sidebar({
   isOpen,
+  setShoppingCart,
+  setCheckoutForm,
   shoppingCart,
   products,
   checkoutForm,
   handleOnCheckoutFormChange,
   handleOnSubmitCheckoutForm,
   handleOnToggle,
+  isClicked,
+  setIsClicked,
 }) {
 
 
@@ -22,7 +26,7 @@ export default function Sidebar({
   
   const display1 = isOpen ? <ShoppingCart isOpen = {isOpen} shoppingCart = {shoppingCart} products = {products}/> : "";
 
-  const display2 = isOpen ? <CheckoutForm isOpen = {isOpen} checkoutForm = {checkoutForm} shoppingCart = {shoppingCart} handleOnCheckoutFormChange = {handleOnCheckoutFormChange} handleOnSubmitCheckoutForm = {handleOnSubmitCheckoutForm} /> : "";
+  const display2 = isOpen ? <CheckoutForm setCheckoutForm = {setCheckoutForm} setShoppingCart = {setShoppingCart} products = {products} isClicked = {isClicked} setIsClicked = {setIsClicked} isOpen = {isOpen} checkoutForm = {checkoutForm} shoppingCart = {shoppingCart} handleOnCheckoutFormChange = {handleOnCheckoutFormChange} handleOnSubmitCheckoutForm = {handleOnSubmitCheckoutForm} /> : "";
 
   const arrow = isOpen ? "<---" : "➡️"
 

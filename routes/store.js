@@ -16,9 +16,6 @@ const { BadRequestError, NotFoundError } = require("../utils/errors");
 store.get("/" , async (req, res, next) => {
 
 
-    console.log("Store", studentStore.getProducts())
-
-
     let object = { "products" : studentStore.getProducts()}
 
 
@@ -29,6 +26,7 @@ store.get("/" , async (req, res, next) => {
 
 
 store.get("/:productId", async(req, res, next) => {
+
 
 
 
@@ -47,14 +45,11 @@ store.post("/", (req, res, next) => {
     const body = req.body
 
 
-
-    console.log("Body? ", body)
-
-
-    if (!body.user.name || !body.user.email || !body.shoppingCart){
+    if (body.user.name.length == 0 || body.user.email == 0 || body.shoppingCart == 0){
 
         return next(new BadRequestError())
     }
+
 
     const object = studentStore.handlePurchases(body)
 

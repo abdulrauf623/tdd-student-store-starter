@@ -9,14 +9,38 @@ import Welcome from "/src/components/Welcome/Welcome"
 
 import SearchDetail from "../SearchDetail/SearchDetail"
 
-export default function Home({products, handleAddItemToCart,handleRemoveItemToCart, shoppingCart}) {
+export default function Home({changeToDefault, changeToAccessories, changeToFood, changeToClothing, changeToTech,  products, handleAddItemToCart,handleRemoveItemToCart, shoppingCart}) {
+
+
+
+  const categories = <div className="categories">
+
+
+    <li onClick={changeToDefault}> All Categories</li>
+
+    <li onClick={changeToClothing}>  Clothing</li>
+
+    <li  onClick={changeToFood}> Food</li>
+
+
+    <li onClick={changeToAccessories}> Accessories</li>
+
+    <li onClick={changeToTech}> Tech </li>
+
+
+  </div>
+
+
   return (
     <div className="home">
       <Welcome />
 
 
+      {categories}
 
-      <SearchDetail handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart = {handleRemoveItemToCart} shoppingCart = {shoppingCart}/>
+
+
+      {/* <SearchDetail handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart = {handleRemoveItemToCart} shoppingCart = {shoppingCart}/> */}
 
 
 

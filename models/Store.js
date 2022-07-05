@@ -12,10 +12,6 @@ class Store {
 
 
 
-        console.log("Stor,", storage.storage.get("products").value())
-
-
-
         // return storage.get("products")
 
 
@@ -52,9 +48,6 @@ class Store {
     static handlePurchases(purchase){
 
         let free = 0;
-
-
-        console.log("Purchases")
 
        
 
@@ -129,21 +122,13 @@ class Store {
         }
 
 
-        console.log("Purchase", purchase)
-
-
        
 
 
 
-        console.log("Purchases array" , object)
 
 
         object.push(item)
-
-
-        console.log("Did it push on top? ", object)
-
 
 
         let set = storage.storage.set("purchases", object)
